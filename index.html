@@ -277,7 +277,8 @@
 -->
      <script type="text/template" id="user-template"> 
      <%- username%>
-     <%- id%>
+     
+     <a class="loveit" href="javascript:;" rel="http://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>/subscribe/"  onClick="subscribe(this);"><span class="glyphicon glyphicon-thumbs-up"></span></a>
     </script>
     <script type="text/template" id="posts-template"> 
 <!--     <div class="jumbotron">
@@ -539,6 +540,30 @@ function showComment(){
   function like(placeholder) {
         $.ajax({
             url: $(placeholder).attr('rel'),
+            type: "GET",
+            success:function(responseText, statusText, xhr, $form){
+                
+                if(responseText.already_liked){
+                    $('#likedModalB').click();
+                 
+                    var lid = $("#pdId").attr('value');
+                    app.router.navigate('show/' + parseInt(lid),true);
+                 
+                }else{
+                 var lid = $("#pdId").attr('value');
+                 app.router.navigate('show/' + parseInt(lid),true);
+                    
+                }
+            },
+            error:function (){
+                alert("testing error");
+            }
+        });
+        return false;
+}
+        function subscribe(placeholder) {
+        $.ajax({
+            url: $(placeholder).attr('rel') +Cookies.get('instaUser') ,
             type: "GET",
             success:function(responseText, statusText, xhr, $form){
                 
