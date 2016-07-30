@@ -490,7 +490,9 @@
          $('#lists').show();
          $("#userid").val(responseText.id);
          
-         app.feed = new app.FeedCollection({id: responseText.id});
+         app.feed = new app.FeedCollection();
+         app.feed.url ='http://harshitkumar.pythonanywhere.com/posts/api/feed/' + responseText.id;
+         
         app.feed.fetch({
         success : function(response,xhr,options){
         
