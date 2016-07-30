@@ -489,7 +489,14 @@
          $('#auth').hide();
          $('#lists').show();
          $("#userid").val(responseText.id);
+         
+         app.feed = new app.FeedCollection({id: responseText.id});
+        app.feed.fetch({
+        success : function(response,xhr,options){
+        
          app.appView = new app.AppView({collection : app.feed});
+        }
+        });
      }else{
          alert("Invalid credentials. Try again!\n");
      }
