@@ -126,7 +126,7 @@ app.AppView = Backbone.View.extend({
                 var x = app.usersList.models[0].get('results');
                 for(i=0;i<x.length;i++){
                     var userView = new app.UserView({model :new app.User(x[i]) });
-                    $('subscribe_List').append(userView.render().el);
+                    $('#subscribe_List').append(userView.render().el);
                 }
                 
                 
