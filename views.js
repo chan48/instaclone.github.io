@@ -110,6 +110,11 @@ app.AppView = Backbone.View.extend({
         this.iteminput = this.$('#add-todoItem');
         this.imageInput = this.$('#image');
         var self = this;
+        app.feed = new app.FeedCollection();
+         app.feed.url ='http://harshitkumar.pythonanywhere.com/posts/api/feed/' + responseText.id;
+          
+        
+       
         var y =app.feed.fetch({
              
             success:function(response,xhr,options){
