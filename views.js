@@ -116,7 +116,7 @@ app.AppView = Backbone.View.extend({
     showUsers : function(e){
         
         app.usersList= new app.UserCollection();
-        app.usersList.url = 'http://harshitkumar.pythonanywhere.com/posts/api/logaccounts/';
+        app.usersList.url = 'https://harshitkumar.pythonanywhere.com/posts/api/logaccounts/';
         
         app.usersList.fetch({
             
@@ -159,7 +159,7 @@ app.AppView = Backbone.View.extend({
         var self = this;
         app.feed = new app.FeedCollection();
         var id = parseInt(Cookies.get('instaUser'));
-         app.feed.url ='http://harshitkumar.pythonanywhere.com/posts/api/feed/' + id;
+         app.feed.url ='https://harshitkumar.pythonanywhere.com/posts/api/feed/' + id;
           
         
        

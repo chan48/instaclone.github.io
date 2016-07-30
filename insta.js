@@ -13,7 +13,7 @@ app.Likes = Backbone.Model.extend({
         previous : null,
         results : null
     },
-    urlRoot : 'http://harshitkumar.pythonanywhere.com/posts/api/posts/likes',
+    urlRoot : 'https://harshitkumar.pythonanywhere.com/posts/api/posts/likes',
     
 });
 
@@ -22,7 +22,7 @@ app.CommentCollection = Backbone.Model.extend({
     defaults : {
         comments : null,
     },
-    urlRoot : 'http://harshitkumar.pythonanywhere.com/posts/api/posts/comments/'
+    urlRoot : 'https://harshitkumar.pythonanywhere.com/posts/api/posts/comments/'
 
 });
 

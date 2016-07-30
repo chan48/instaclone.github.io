@@ -159,41 +159,6 @@
   </div>
 </div>
     
-<!--
-<form action="http://harshitkumar.pythonanywhere.com/posts/api/authenticate/" enctype="multipart/form-data" method="post" id="loginForm">
-                
-              <div class="form-group">
-                <input  id="username" placeholder="Username" autofocus name="username">
-            <input  type="password" id="password" name="password" placeholder="Password">
-                <input type="hidden" name="redirect" value="index.html">
-
-
-                <input  class="btn btn-primary" type="submit" value="Login" >
-                </div>
-                </form>
-
-<li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-picture"></span>Upload Image <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-           
-              
-<!--
-            <form action="http://harshitkumar.pythonanywhere.com/posts/api/posts" enctype="multipart/form-data" method="post" id="postForm">
-                <input type="hidden" name="csrfmiddlewaretoken" value="87KQjGeytUmnt637c21Sb3UF8dbOvhaQ">
-              <div class="form-group">
-                <input  class="form-control" id="title" placeholder="Title" autofocus name="title">
-            <input  type="file" id="image" name="image">
-                <input type="hidden" name="redirect" value="index.html">
-
-
-                <input   type="number" id="userid" name="user" hidden="true">
-                <input   type="text" hidden="true" name="date_created" id="date_created" value="">
-                <input  class="btn btn-primary" type="submit" value="Upload" >
-                </div>
-                </form>
-          </ul>
-        </li>
--->
 
     <div class="container" id="auth" >
 <div class="row">
@@ -268,13 +233,7 @@
         </table>
     </section>
   </section>
-<!--
-<tr class="success">
-    </tr>
- <td><button class="update" data="<%- id%>">update</button></td>
-      <td><button class="destroy" data="<%- id%>">remove</button></td>
-     <img src="<%- image %>" height="50%" width="50%" class="img-thumbnail img-responsive">
--->
+
      <script type="text/template" id="user-template"> 
      <%- username%>
      
@@ -571,7 +530,7 @@ function showComment(){
                 
                 if(responseText.already_subscribed){
                    
-                 
+                 alert("Already subscribed");
                  
                 }else{
                  app.router.navigate('home',true);
