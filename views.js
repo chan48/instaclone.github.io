@@ -18,7 +18,8 @@ app.PostView = Backbone.View.extend({
 
 app.UserView = Backbone.View.extend({
     
-    tagName : 'div',
+    tagName : 'li',
+    className : 'list-group-item',
     template : _.template($('#user-template').html()),
     initialize : function(){
         this.model = this.options.model;
