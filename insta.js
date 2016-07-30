@@ -1,9 +1,9 @@
 
 
-app.FeedCollection = Backbone.Model.extend({
+app.FeedCollection = Backbone.Collection.extend({
     
   //  urlRoot : 'http://127.0.0.1:8000/posts/api/feed/',
-   // model: app.Feed
+    model: app.Feed
 });
 
 app.Likes = Backbone.Model.extend({
