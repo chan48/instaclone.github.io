@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+  
+      <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Instagram</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+          <style>
+              tr{
+                  align-content: center;
+                  align-items: center;
+                  align-self: center
+              }
+              
+              .navbar-brand {
+                  padding: 0;
+                }   
+
+                .navbar-brand img {
+                    max-height: 100%;
+/*                    width: 200px;*/
+                }
+
+            </style>
+          
+     <script src="javascripts/jquery.min.js" type="text/javascript"></script>
+  
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+          <link href="index.css" rel="stylesheet">
+    </head>
+    
+   
+<body onload="check()">
+
+<section id="instaclone">
+    
+<nav class="navbar navbar-default"  >
+  <div class="container-fluid" style="background-color: #1485cc;"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header" style="background-color: #1485cc;">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">
+<!--        <img alt="Pictogram" src="images/brand1.png" >-->
+          Instagram
+        </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: #1485cc;">
+      <ul class="nav navbar-nav">
+<!--        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
+        <li ><a href="index.html">Link</a></li>
+          <li  ><a data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-picture"></span>Upload Image</a></li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search" id="searchForm">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a id='logout' >Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+    <!-- /.container-fluid -->
+</nav>  
+
+
+    <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Upload Image</h4>
+      </div>
+      <div class="modal-body">
+       <form action="http://harshitkumar.pythonanywhere.com/posts/api/posts" enctype="multipart/form-data" method="post" id="postForm">
+                <input type="hidden" name="csrfmiddlewaretoken" value="87KQjGeytUmnt637c21Sb3UF8dbOvhaQ">
+              <div class="form-group">
+                <input  class="form-control" id="title" placeholder="Title" autofocus name="title">
+            <input  type="file" id="image" name="image">
+                <input type="hidden" name="redirect" value="index.html">
+
+
+                <input   type="number" id="userid" name="user" hidden="true">
+                <input   type="text" hidden="true" name="date_created" id="date_created" value="">
+                <input  class="btn btn-primary" type="submit" value="Upload" >
+                </div>
+                </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#signupModal" id="signUpModalB" style="visibility: hidden">Open Modal</button>
+
+<!-- Modal -->
+<div id="signupModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        <p>You have successfully signed up!</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#likedModal" id="likedModalB" style="visibility: hidden">Open Modal</button>
+
+<!-- Modal -->
+<div id="likedModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        <p>You have already liked this post!</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+    
+<!--
+<form action="http://harshitkumar.pythonanywhere.com/posts/api/authenticate/" enctype="multipart/form-data" method="post" id="loginForm">
+                
+              <div class="form-group">
+                <input  id="username" placeholder="Username" autofocus name="username">
+            <input  type="password" id="password" name="password" placeholder="Password">
+                <input type="hidden" name="redirect" value="index.html">
+
+
+                <input  class="btn btn-primary" type="submit" value="Login" >
+                </div>
+                </form>
+
+<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-picture"></span>Upload Image <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           
+              
+<!--
+            <form action="http://harshitkumar.pythonanywhere.com/posts/api/posts" enctype="multipart/form-data" method="post" id="postForm">
+                <input type="hidden" name="csrfmiddlewaretoken" value="87KQjGeytUmnt637c21Sb3UF8dbOvhaQ">
+              <div class="form-group">
+                <input  class="form-control" id="title" placeholder="Title" autofocus name="title">
+            <input  type="file" id="image" name="image">
+                <input type="hidden" name="redirect" value="index.html">
+
+
+                <input   type="number" id="userid" name="user" hidden="true">
+                <input   type="text" hidden="true" name="date_created" id="date_created" value="">
+                <input  class="btn btn-primary" type="submit" value="Upload" >
+                </div>
+                </form>
+          </ul>
+        </li>
+-->
+
+    <div class="container" id="auth" >
+<div class="row">
+<div class="col-md-4 col-md-offset-4">
+<div class="form-body">
+    <ul class="nav nav-tabs final-login">
+        <li class="active"><a data-toggle="tab" href="#sectionA">Sign In</a></li>
+        <li><a data-toggle="tab" href="#sectionB">Join us!</a></li>
+    </ul>
+    <div class="tab-content" >
+        <div id="sectionA" class="tab-pane fade in active">
+        <div class="innter-form">
+            <h5 style="color:red" id="loginError"> </h5>
+            <form class="sa-innate-form" action="http://harshitkumar.pythonanywhere.com/posts/api/authenticate/" enctype="multipart/form-data" method="post" id="loginForm">
+            <label>Username</label>
+            <input type="text" name="username"><br>
+            <label>Password</label>
+            <input type="password" name="password"><br>
+            <button type="submit">Sign In</button><br>
+            <a href="">Forgot Password?</a>
+            </form>
+            
+            </div>
+            
+            <div class="clearfix"></div>
+        </div>
+        <div id="sectionB" class="tab-pane fade">
+			<div class="innter-form">
+             <form class="sa-innate-form" action="http://harshitkumar.pythonanywhere.com/posts/api/logaccounts/" enctype="multipart/form-data" method="post" id="signUpForm">
+           
+            <label>First Name</label>
+            <input type="text" name="first_name"><br>
+            <label>Last Name</label>
+            <input type="text" name="last_name"><br>
+            
+            <label>Username</label>
+            <input type="text" name="username"><br>
+            <label>Email Address</label>
+            <input type="text" name="email"><br>
+            <label>Password</label>
+            <input type="password" name="password"><br>
+            <button type="submit">Join now</button><br>
+<!--            <p>By clicking Join now, you agree to hifriends's User Agreement, Privacy Policy, and Cookie Policy.</p>-->
+            </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div id="output3"></div>
+    <div id="output2"></div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
+<script src="javascripts/bootstrap-dropdown.js"></script>
+
+    
+
+    <header id="header">
+    </header>
+
+    <div id="lists"></div>
+    <section id='items'>
+        <div id='inp-edit'></div>
+        <table class="itemsclass table" id='items-final'>
+            
+        </table>
+    </section>
+  </section>
+<!--
+<tr class="success">
+    </tr>
+ <td><button class="update" data="<%- id%>">update</button></td>
+      <td><button class="destroy" data="<%- id%>">remove</button></td>
+     <img src="<%- image %>" height="50%" width="50%" class="img-thumbnail img-responsive">
+-->
+    <script type="text/template" id="posts-template"> 
+<!--     <div class="jumbotron">
+ -->      <div class="container-fluid">
+	   <div class="row">
+		  <div class="col-md-12">
+			 <h3 class="text-center">
+            <label data="<%- id%>"><%- title %></label>
+			</h3>
+      <input id="edit-todo" class="edit" data="<%- id%>" value="<%- title %>" hidden='true' >
+      <img  align="middle" alt="Image Preview" height="50%" width="50%" src="<%- image %>" class="img-thumbnail img-responsive" style="margin: 0 auto;display: block;" />
+		  </div>
+	   </div>
+        </div>
+<!--         </div> -->
+</script>
+<!--    <img src="<%- image%>" height="50%" width="50%" class="img-thumbnail img-responsive">-->
+<script type="text/template" id="post-detail-template">
+
+    <input type="text" id="pdId" value="<%= id%>" hidden>
+    <input type="text" id="lgId" value="<%= logged_in_user%>" hidden>
+    <h2 class="text-center"><%- title%></h2>
+    
+       <img  align="middle" alt="Image Preview" height="50%" width="50%" src="<%- image %>" class="img-thumbnail img-responsive" style="margin: 0 auto;display: block;" />
+	
+    <br>
+         <h3 class="text-center"><a class="loveit" href="javascript:;" rel="http://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>/like/<%= logged_in_user%>"  onClick="like(this);"><span class="glyphicon glyphicon-thumbs-up"></span></a> <%- likes%>  Posted by <%- postUsername%></h3>
+    <!-- <h3 class="text-center"><span class="glyphicon glyphicon-comment"></span></h3> -->
+      <% if (userStat) {%>
+       <h3 class="text-center"> <a class="deleteit" href="javascript:;" rel="http://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>"  onClick="deletePost(this);"><span class="glyphicon glyphicon-trash"></span></a></h3>
+    <% } %>
+    </form>
+    
+
+</script>
+    
+    <script type="text/template" id="comment-template">
+    <div class="col-sm-4 col-md-offset-4 text-center">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong><%= user%></strong> <span class="text-muted"><%= date_created%></span>
+            </div>
+                <div class="panel-body">
+                    <%= comment%>
+        </div>
+        </div>
+        </div>
+        <div class="col-sm-4" >
+        </div>
+
+        
+    </script>
+    <div class="col-md-offset-4 col-md-4" id="comment" >
+    <form action="http://harshitkumar.pythonanywhere.com/posts/api/posts/comments/" enctype="multipart/form-data" method="post" id="commentForm" >
+           <input type="hidden" name="csrfmiddlewaretoken" value="87KQjGeytUmnt637c21Sb3UF8dbOvhaQ">
+           <input class="form-control" type="text" name="comment" placeholder="Write a comment">
+           <input type="text" id="post" name="post" hidden >
+                           <input type="hidden" name="redirect" value="index.html">
+           <input type="text" name="user" id="user"  hidden>
+              <input type="submit" class="btn submit-btn pull-right" value="Comment">
+        </form>
+        </div>
+
+<script type="text/template" id="single-post">
+    
+    
+    </script>
+
+    <script src="javascripts/js.cookie.js" type="text/javascript"></script>
+    <script src="javascripts/underscore-min1.js" type="text/javascript"></script>
+    <script src="javascripts/backbone-min1.js" type="text/javascript"></script>
+
+<!--
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js" type="text/javascript"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js" type="text/javascript"></script>
+-->
+
+<!--
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.3/underscore-min.js" type="text/javascript"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.9/backbone-min.js" type="text/javascript"></script>
+    
+-->
+ <!--  <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.0/backbone.localStorage-min.js" type="text/javascript"></script> -->
+
+
+    <!-- =============== -->
+  <!-- Javascript code -->
+  <!-- =============== -->
+    <script src="models.js" type="text/javascript"></script>
+    <script src="views.js" type="text/javascript"></script>
+  <script src="insta.js" type="text/javascript">
+    // your JS code goes here
+  </script>
+
+<script src="http://malsup.github.com/jquery.form.js"></script> 
+ 
+    <script type="text/javascript" >
+        function check(){
+            var x = document.referrer;
+            console.log(x);
+        }
+ $(document).ready(function() { 
+     
+     var options = { 
+        target:        '#output3',   // target element(s) to be updated with server response 
+        beforeSubmit:  showRequest,  // pre-submit callback 
+        success:       showResponse,  // post-submit callback 
+        resetForm: true 
+            }; 
+        
+
+     var comm_options = { 
+        target:        '#output3',   // target element(s) to be updated with server response 
+        beforeSubmit:  showRequest,  // pre-submit callback 
+        success:       showComment,  // post-submit callback 
+        resetForm: true 
+            }; 
+     var login_options = { 
+        target:        '#output3',   // target element(s) to be updated with server response 
+        beforeSubmit:  showRequest,  // pre-submit callback 
+        success:       saveResponse,  // post-submit callback 
+         error : loginError,
+        resetForm: true 
+            }; 
+     
+     var signup_options = { 
+        target:        '#output3',   // target element(s) to be updated with server response 
+        beforeSubmit:  showRequest,  // pre-submit callback 
+        success:       signUp,  // post-submit callback 
+         error : loginError,
+        resetForm: true 
+            }; 
+        
+     
+        $('#postForm').submit(function(){
+            console.log(new Date().toISOString().substring(0,10));
+            var date_str = new Date().toISOString().substring(0,10);
+            
+            $('#date_created').val(date_str);
+            
+        $(this).ajaxSubmit(options);
+        
+        $('#postForm')[0].reset();
+        return false;
+    });
+        $('#searchForm').submit(function(){
+
+
+        });
+      $('#commentForm').submit(function(){
+
+          var pos_id = $('#pdId').val();
+          var log_id = $('#lgId').val();
+        $('#post').val(pos_id);
+        $('#user').val(log_id);
+        $(this).ajaxSubmit(comm_options);
+        
+        $('#commentForm')[0].reset();
+                 
+        return false;
+    });
+     
+     $('#loginForm').submit(function(){
+        console.log("Login Form");
+            
+        $(this).ajaxSubmit(login_options);
+         
+         return false;
+     });
+     $('#signUpForm').submit(function(){
+            $(this).ajaxSubmit(signup_options);
+          
+         return false;
+     });
+     $('#likeForm').submit(function(){
+        console.log('Like Form');
+        var options = { 
+        target:        '#output3',
+        beforeSubmit:  showRequest,
+        success:       showLike,
+        resetForm: true 
+        }; 
+        $(this).ajaxSubmit(options);        
+         return false;
+     });
+ });
+        function signUp(responseText, statusText, xhr, $form){
+            
+            $('#signUpModalB').click();
+            return false;
+        }
+        
+        function showRequest(formData, jqForm, options) { 
+    var queryString = $.param(formData); 
+ 
+  
+//    alert('About to submit: \n\n' + queryString); 
+ 
+    return true; 
+} 
+        function showLike(responseText, statusText,xhr,$form){
+            
+        }
+ function saveResponse(responseText, statusText, xhr, $form){
+     
+     if(responseText.token==true){
+         console.log(xhr);
+         console.log(responseText);
+
+        var d = new Date();
+        d.setTime(d.getTime() + (30*24*60*60*1000));
+        var expires = "expires="+ d.toUTCString();
+        document.cookie = "instaUser" + "=" + responseText.id.toString() + "; " + expires;
+
+         $('#auth').hide();
+         $('#lists').show();
+         $("#userid").val(responseText.id);
+         app.appView = new app.AppView({collection : app.feed});
+     }else{
+         alert("Invalid credentials. Try again!\n");
+     }
+     return false;
+ }
+// post-submit callback 
+function showResponse(responseText, statusText, xhr, $form)  { 
+  
+    alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + 
+        '\n\nThe output div should have already been updated with the responseText.'); 
+    console.log(responseText);
+            var imgPost = new app.ImagePost(responseText);
+            var imgView = new app.PostView({model : imgPost });
+            
+        $('#lists').prepend(imgView.render().el);
+        
+//        app.appView.render();
+    return false;
+}
+function showComment(){
+                 
+                 $('#output2').append("<div class='ol-sm-4 col-md-offset-4 text-center'><div class='panel panel-default'><div class='panel-heading'><strong>'<%= user%></strong> <span class='text-muted'><%= date_created%></span></div><div class='panel-body'>  <%= comment%><div></div></div><div class='col-sm-4' ></div>");
+
+                 return false;
+}
+  function loginError(){
+      
+      $('#loginError').html("Invalid Username or Password");
+  }
+  function like(placeholder) {
+        $.ajax({
+            url: $(placeholder).attr('rel'),
+            type: "GET",
+            success:function(responseText, statusText, xhr, $form){
+                
+                if(responseText.already_liked){
+                    $('#likedModalB').click();
+                 
+                    var lid = $("#pdId").attr('value');
+                    app.router.navigate('show/' + parseInt(lid),true);
+                 
+                }else{
+                 var lid = $("#pdId").attr('value');
+                 app.router.navigate('show/' + parseInt(lid),true);
+                    
+                }
+            },
+            error:function (){
+                alert("testing error");
+            }
+        });
+        return false;
+}
+        function deletePost(placeholder) {
+        $.ajax({
+            url: $(placeholder).attr('rel'),
+            type: "DELETE",
+            success:function(responseText, statusText, xhr, $form){
+                
+                
+                 app.router.navigate('home',true);
+                    
+                
+            },
+            error:function (){
+                alert("testing error");
+            }
+        });
+        return false;
+        }
+        
+    </script>
+  
+</body>
+</html>
