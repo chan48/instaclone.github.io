@@ -53,6 +53,7 @@ app.AppView = Backbone.View.extend({
 //        'keypress #title' : 'addOne',
         'click #sButton' : 'addOne',
         'click a#logout':'logout',
+        'click a#showUsers': 'showUsers',
         'click a' : 'showAll'
         
     },
