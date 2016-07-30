@@ -278,7 +278,7 @@
      <script type="text/template" id="user-template"> 
      <%- username%>
      
-     <a class="loveit" href="javascript:;" rel="http://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>/subscribe/"  onClick="subscribe(this);"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+     <a class="loveit" href="javascript:;" rel="http://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>/subscribe/"  onClick="subscribe(this);"><span class="glyphicons glyphicons-plus"></span></a>
     </script>
     <script type="text/template" id="posts-template"> 
 <!--     <div class="jumbotron">
@@ -563,25 +563,26 @@ function showComment(){
 }
         function subscribe(placeholder) {
         $.ajax({
-            url: $(placeholder).attr('rel') +Cookies.get('instaUser') ,
+            url: $(placeholder).attr('rel') + Cookies.get('instaUser') ,
             type: "GET",
             success:function(responseText, statusText, xhr, $form){
                 
                 if(responseText.already_subscribed){
-                    $('#likedModalB').click();
+                   
                  
                  
                 }else{
                  app.router.navigate('home',true);
                     
                 }
+                console.log("LOL");
             },
             error:function (){
                 alert("testing error");
             }
         });
         return false;
-}
+        }
         function deletePost(placeholder) {
         $.ajax({
             url: $(placeholder).attr('rel'),
