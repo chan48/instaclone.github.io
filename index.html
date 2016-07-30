@@ -103,7 +103,7 @@
         <h4 class="modal-title">Upload Image</h4>
       </div>
       <div class="modal-body">
-       <form action="http://harshitkumar.pythonanywhere.com/posts/api/posts" enctype="multipart/form-data" method="post" id="postForm">
+       <form action="https://harshitkumar.pythonanywhere.com/posts/api/posts" enctype="multipart/form-data" method="post" id="postForm">
                 <input type="hidden" name="csrfmiddlewaretoken" value="87KQjGeytUmnt637c21Sb3UF8dbOvhaQ">
               <div class="form-group">
                 <input  class="form-control" id="title" placeholder="Title" autofocus name="title">
@@ -191,7 +191,7 @@
         <div id="sectionA" class="tab-pane fade in active">
         <div class="innter-form">
             <h5 style="color:red" id="loginError"> </h5>
-            <form class="sa-innate-form" action="http://harshitkumar.pythonanywhere.com/posts/api/authenticate/" enctype="multipart/form-data" method="post" id="loginForm">
+            <form class="sa-innate-form" action="https://harshitkumar.pythonanywhere.com/posts/api/authenticate/" enctype="multipart/form-data" method="post" id="loginForm">
             <label>Username</label>
             <input type="text" name="username"><br>
             <label>Password</label>
@@ -206,7 +206,7 @@
         </div>
         <div id="sectionB" class="tab-pane fade">
 			<div class="innter-form">
-             <form class="sa-innate-form" action="http://harshitkumar.pythonanywhere.com/posts/api/logaccounts/" enctype="multipart/form-data" method="post" id="signUpForm">
+             <form class="sa-innate-form" action="https://harshitkumar.pythonanywhere.com/posts/api/logaccounts/" enctype="multipart/form-data" method="post" id="signUpForm">
            
             <label>First Name</label>
             <input type="text" name="first_name"><br>
@@ -236,7 +236,7 @@
         </ul>
     </div>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
 <script src="javascripts/bootstrap-dropdown.js"></script>
 
     
@@ -256,7 +256,7 @@
      <script type="text/template" id="user-template"> 
      <%- username%>
      
-     <a class="loveit" href="javascript:;" rel="http://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>/subscribe/"  onClick="subscribe(this);" class="myButton">Subscribe</a>
+     <a class="loveit" href="javascript:;" rel="https://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>/subscribe/"  onClick="subscribe(this);" class="myButton">Subscribe</a>
      
      
     </script>
@@ -285,10 +285,10 @@
        <img  align="middle" alt="Image Preview" height="50%" width="50%" src="<%- image %>" class="img-thumbnail img-responsive" style="margin: 0 auto;display: block;" />
 	
     <br>
-         <h3 class="text-center"><a class="loveit" href="javascript:;" rel="http://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>/like/<%= logged_in_user%>"  onClick="like(this);"><span class="glyphicon glyphicon-thumbs-up"></span></a> <%- likes%>  Posted by <%- postUsername%></h3>
+         <h3 class="text-center"><a class="loveit" href="javascript:;" rel="https://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>/like/<%= logged_in_user%>"  onClick="like(this);"><span class="glyphicon glyphicon-thumbs-up"></span></a> <%- likes%>  Posted by <%- postUsername%></h3>
     <!-- <h3 class="text-center"><span class="glyphicon glyphicon-comment"></span></h3> -->
       <% if (userStat) {%>
-       <h3 class="text-center"> <a class="deleteit" href="javascript:;" rel="http://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>"  onClick="deletePost(this);"><span class="glyphicon glyphicon-trash"></span></a></h3>
+       <h3 class="text-center"> <a class="deleteit" href="javascript:;" rel="https://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>"  onClick="deletePost(this);"><span class="glyphicon glyphicon-trash"></span></a></h3>
     <% } %>
     </form>
     
@@ -312,7 +312,7 @@
         
     </script>
     <div class="col-md-offset-4 col-md-4" id="comment" >
-    <form action="http://harshitkumar.pythonanywhere.com/posts/api/posts/comments/" enctype="multipart/form-data" method="post" id="commentForm" >
+    <form action="https://harshitkumar.pythonanywhere.com/posts/api/posts/comments/" enctype="multipart/form-data" method="post" id="commentForm" >
            <input type="hidden" name="csrfmiddlewaretoken" value="87KQjGeytUmnt637c21Sb3UF8dbOvhaQ">
            <input class="form-control" type="text" name="comment" placeholder="Write a comment">
            <input type="text" id="post" name="post" hidden >
@@ -355,7 +355,7 @@
     // your JS code goes here
   </script>
 
-<script src="http://malsup.github.com/jquery.form.js"></script> 
+<script src="https://malsup.github.com/jquery.form.js"></script> 
  
     <script type="text/javascript" >
         function check(){
@@ -480,7 +480,7 @@
          $("#userid").val(responseText.id);
          
          app.feed = new app.FeedCollection();
-         app.feed.url ='http://harshitkumar.pythonanywhere.com/posts/api/feed/' + responseText.id;
+         app.feed.url ='https://harshitkumar.pythonanywhere.com/posts/api/feed/' + responseText.id;
          
         app.feed.fetch({
         success : function(response,xhr,options){
