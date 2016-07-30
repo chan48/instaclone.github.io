@@ -111,7 +111,7 @@ app.AppView = Backbone.View.extend({
         });
         
         
-    }
+    },
     showItems : function(e){
 
       //  alert("Clicked!");
