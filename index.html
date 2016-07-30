@@ -159,6 +159,25 @@
   </div>
 </div>
     
+    
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#subModal" id="subModalB" style="visibility: hidden">Open Modal</button>
+
+<!-- Modal -->
+<div id="subModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        <p>You have already subscribed to this user!</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+  
+    
 
     <div class="container" id="auth" >
 <div class="row">
@@ -530,13 +549,15 @@ function showComment(){
                 
                 if(responseText.already_subscribed){
                    
-                 alert("Already subscribed");
+                 $('#subModalB').click();
+                
                  
                 }else{
                  app.router.navigate('home',true);
                     
                 }
                 console.log("LOL");
+                location.reload();
             },
             error:function (){
                 alert("testing error");
