@@ -111,7 +111,8 @@ app.AppView = Backbone.View.extend({
         this.imageInput = this.$('#image');
         var self = this;
         app.feed = new app.FeedCollection();
-         app.feed.url ='http://harshitkumar.pythonanywhere.com/posts/api/feed/' + responseText.id;
+        var id = parseInt(Cookies.get('instaUser'));
+         app.feed.url ='http://harshitkumar.pythonanywhere.com/posts/api/feed/' + id;
           
         
        
