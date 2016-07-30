@@ -97,6 +97,21 @@ app.AppView = Backbone.View.extend({
     showAll : function(e){
         app.router.navigate('home',true);
     },
+    showUsers : function(e){
+        
+        app.usersList= new app.UserCollection();
+        app.usersList.url = 'http://harshitkumar.pythonanywhere.com/posts/api/logaccounts/';
+        
+        app.usersList.fetch({
+            
+            success : function(){
+                
+                console.log(app.usersList);
+            }
+        });
+        
+        
+    }
     showItems : function(e){
 
       //  alert("Clicked!");

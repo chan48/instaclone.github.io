@@ -79,3 +79,7 @@ app.User = Backbone.Model.extend({
     
 });
 
+app.UserCollection = Backbone.Collection.extend({
+    
+});
+
