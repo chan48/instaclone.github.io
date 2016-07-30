@@ -2,7 +2,7 @@
 
 app.FeedCollection = Backbone.Collection.extend({
     
-    urlRoot : 'http://harshitkumar.pythonanywhere.com/posts/api/posts',
+    urlRoot : 'http://127.0.0.1:8000/posts/api/feed/',
     model: app.Feed
 });
 
