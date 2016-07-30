@@ -567,15 +567,12 @@ function showComment(){
             type: "GET",
             success:function(responseText, statusText, xhr, $form){
                 
-                if(responseText.already_liked){
+                if(responseText.already_subscribed){
                     $('#likedModalB').click();
                  
-                    var lid = $("#pdId").attr('value');
-                    app.router.navigate('show/' + parseInt(lid),true);
                  
                 }else{
-                 var lid = $("#pdId").attr('value');
-                 app.router.navigate('show/' + parseInt(lid),true);
+                 app.router.navigate('home',true);
                     
                 }
             },
