@@ -2,7 +2,7 @@
 
 app.FeedCollection = Backbone.Collection.extend({
     
-    url : 'http://harshitkumar.pythonanywhere.com/posts/api/posts',
+    urlRoot : 'http://harshitkumar.pythonanywhere.com/posts/api/posts',
     model: app.Feed
 });
 

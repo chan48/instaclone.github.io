@@ -1,20 +1,5 @@
 var app={};
 
-//Backbone.AuthenticatedModel = Backbone.Model.extend({
-//    sync: function(method, collection, options){
-//        options = options || {};
-//        options.beforeSend = function (xhr) {
-//            var user = "aishu";// your actual username
-//            var pass = "class123";// your actual password
-//            var token = user.concat(":", pass);
-//            xhr.setRequestHeader('Authorization', ("Basic ".concat(btoa(token))));
-//            console.log("xhr" + xhr);
-//        };
-//        return Backbone.Model.prototype.sync.apply(this, arguments);
-//    }
-//
-//});
-
 
 app.ImagePost=Backbone.Model.extend({
     defaults :{

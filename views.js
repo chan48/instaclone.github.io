@@ -137,6 +137,9 @@ app.AppView = Backbone.View.extend({
         $('#auth').hide();
         $('#comment').hide();
         $('#lists').html("");
+        app.feed = new app.FeedCollection({id: cookie});
+        app.feed.fetch({
+        success : function(response,xhr,options){
         console.log("Main App view");
         var x = app.feed.models[0];
         var y = x.get('results');
@@ -145,11 +148,13 @@ app.AppView = Backbone.View.extend({
             var imgView = new app.PostView({model : imgPost });
             $('#lists').append(imgView.render().el);
         }
+        }
+        });
         }else{
             $('#auth').show();
             $('#lists').hide();
-        }
 
+    }
     }
 
 });
