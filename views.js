@@ -16,6 +16,21 @@ app.PostView = Backbone.View.extend({
     }
 });
 
+app.UserView = Backbone.View.extend({
+    
+    tagName : 'div',
+    template : _.template($('#user-template').html()),
+    initialize : function(){
+        this.model = this.options.model;
+        this.render();
+       
+    },
+    render : function(){
+       console.log(this.$el);
+        this.$el.html(this.template(this.model.toJSON()));
+        return this;
+    }
+});
 
 
 //app.View = Backbone.View.extend({
@@ -107,6 +122,14 @@ app.AppView = Backbone.View.extend({
             success : function(){
                 
                 console.log(app.usersList);
+                
+                var x = app.usersList.models[0].get('results');
+                for(i=0;i<x.length;i++){
+                    var userView = new app.UserView({model :new app.User(x[i]) });
+                    $('subscribe_List').append(userView.render().el);
+                }
+                
+                
             }
         });
         
