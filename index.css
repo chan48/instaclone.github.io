@@ -302,12 +302,7 @@ body{
     background-image: url(download2.png);
 }
 
-label:hover{
+label:hover, h3:hover{
     
     color: blue;
-}
-h3:hover{
-    
-    color: blue;
-    
 }
