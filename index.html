@@ -38,7 +38,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
           <link href="index.css" rel="stylesheet">
-
+<link rel="shortcut icon" href="images/brand1.png" type="image/png">
     </head>
     
    
@@ -76,10 +76,11 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#" id="showUsers">Users</a></li>
+        <li><a data-toggle="modal" data-target="#helpModal"><span class="glyphicon glyphicon-question-sign"></span>Help</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a data-toggle="modal" data-target="#helpModal">Help</a></li>
+            
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
@@ -264,20 +265,7 @@
                 </div>
             </div>
         </div>
-        <div class="panel panel-default" style="height: 50%;  width: 50%;">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseNine">When do I get paid?</a>
-                </h4>
-            </div>
-            <div id="collapseNine" class="panel-collapse collapse">
-                <div class="panel-body">
-                    Our standard payment plan provides for monthly payments. At the end of each month, all accumulated funds are transfered to your account. 
-                    The minimum amount of your balance should be at least 70 USD. 
-                </div>
-            </div>
-        </div>
-
+        
     </div>
 </div>
 
@@ -342,8 +330,23 @@
     <div id="output3"></div>
     <div id="output2"></div>
     <div >
+<!--
     <ul class="list-group" id="subscribe_List">
         </ul>
+-->
+        <table class="table table-striped table-inverse">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Username</th>
+      
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody id="subscribe_List">
+    
+  </tbody>
+</table>
     </div>
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
@@ -364,9 +367,10 @@
   </section>
 
      <script type="text/template" id="user-template"> 
-     <%- username%>
+     <td><%- id%></td>
+    <td> <%- username%></td>
      
-     <a class="loveit" href="javascript:;" rel="https://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>/subscribe/"  onClick="subscribe(this);" class="myButton">Subscribe</a>
+     <td><a class="loveit" href="javascript:;" rel="https://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>/subscribe/"  onClick="subscribe(this);" class="myButton">Subscribe</a></td>
      
      
     </script>
