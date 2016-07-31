@@ -19,7 +19,7 @@ app.ImageDetail = Backbone.Model.extend({
         user :null,
         date_created : null
     },
-    urlRoot : 'http://harshitkumar.pythonanywhere.com/posts/api/posts/'
+    urlRoot : 'https://harshitkumar.pythonanywhere.com/posts/api/posts/'
     
 });
 
@@ -75,7 +75,7 @@ app.User = Backbone.Model.extend({
         email : null,
         username : null
     },
-    urlRoot : 'http://harshitkumar.pythonanywhere.com/posts/api/logaccounts/'
+    urlRoot : 'https://harshitkumar.pythonanywhere.com/posts/api/logaccounts/'
     
 });
 
