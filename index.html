@@ -56,7 +56,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="" id="homePage">
 <!--        <img alt="Pictogram" src="images/brand1.png" >-->
           Instagram
         </a>
@@ -68,11 +68,11 @@
 
           <li  ><a data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-picture"></span>Upload Image</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search" id="searchForm">
+      <form class="navbar-form navbar-left" role="search"  id="searchForm">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control" id="criteria" name="criteria" placeholder="Search">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="button" class="btn btn-default" id='searchSub'>Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#" id="showUsers">Users</a></li>
@@ -434,7 +434,7 @@
         
     </script>
     <div class="col-md-offset-4 col-md-4" id="comment" >
-    <form action="https://harshitkumar.pythonanywhere.com/posts/api/posts/comments/" enctype="multipart/form-data" method="post" id="commentForm" >
+    <form action="https://harshitkumar.pythonanywhere.com/posts/api/posts/comments/" enctype="multipart/form-data" method="post" id="commentForm"  >
            <input type="hidden" name="csrfmiddlewaretoken" value="87KQjGeytUmnt637c21Sb3UF8dbOvhaQ">
            <input class="form-control" type="text" name="comment" placeholder="Write a comment">
            <input type="text" id="post" name="post" hidden >
@@ -490,7 +490,13 @@
         success:       showResponse,  // post-submit callback 
         resetForm: true 
             }; 
-        
+//        var search_options = { 
+//        target:        '#output3',   // target element(s) to be updated with server response 
+//        beforeSubmit:  showRequest,  // pre-submit callback 
+//        success:       searchResponse,  // post-submit callback 
+//        resetForm: true 
+//            }; 
+//     
 
      var comm_options = { 
         target:        '#output3',   // target element(s) to be updated with server response 
@@ -526,10 +532,10 @@
         $('#postForm')[0].reset();
         return false;
     });
-        $('#searchForm').submit(function(){
-
-
-        });
+//        $('#searchForm').submit(function(){
+//            $(this).ajaxSubmit(search_options);
+//            return false;
+//        });
       $('#commentForm').submit(function(){
 
           var pos_id = $('#pdId').val();
@@ -629,7 +635,7 @@ function showResponse(responseText, statusText, xhr, $form)  {
 }
 function showComment(){
                  
-//                 $('#output2').append("<div class='ol-sm-4 col-md-offset-4 text-center'><div class='panel panel-default'><div class='panel-heading'><strong>'<%= user%></strong> <span class='text-muted'><%= date_created%></span></div><div class='panel-body'>  <%= comment%><div></div></div><div class='col-sm-4' ></div>");
+
                 location.reload();
 
                  return false;
@@ -648,12 +654,12 @@ function showComment(){
                     $('#likedModalB').click();
                  
                     var lid = $("#pdId").attr('value');
-                    app.router.navigate('show/' + parseInt(lid),true);
+                    app.router.navigate('show/' + parseInt(lid),{trigger: true});
                  
                 }else{
                  var lid = $("#pdId").attr('value');
-                 app.router.navigate('show/' + parseInt(lid),true);
-                    
+                 app.router.navigate('show/' + parseInt(lid),{trigger: true});
+                location.reload();  
                 }
             },
             error:function (){

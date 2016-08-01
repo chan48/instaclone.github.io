@@ -71,7 +71,9 @@ app.AppView = Backbone.View.extend({
         'click #sButton' : 'addOne',
         'click a#logout':'logout',
         'click a#showUsers': 'showUsers',
-        'click a' : 'showAll'
+        'click button#searchSub' : 'searchUsers',
+        //'click a' : 'showAll'
+        'click a#homePage': 'showAll',
         
     },
     logout : function(e){
@@ -144,6 +146,39 @@ app.AppView = Backbone.View.extend({
         
         
     },
+    searchUsers : function(e){
+        
+        app.usersList= new app.UserCollection();
+        
+        
+        app.usersList.url = 'https://harshitkumar.pythonanywhere.com/posts/api/' + $('#criteria').val() + '/search';
+        
+        app.usersList.fetch({
+            
+            success : function(){
+                
+                console.log(app.usersList);
+                $('#subscribe_List').html('');
+                $('#lists').hide();
+                $('#output3').html("");
+                $('#output3').hide();
+                $('#output2').html("");
+                $('#output2').hide();
+                $('#comment').hide();
+        
+                
+                var x = app.usersList.models[0].get('results');
+                for(i=0;i<x.length;i++){
+                    var userView = new app.UserView({model :new app.User(x[i]) });
+                    $('#subscribe_List').append(userView.render().el);
+                }
+                
+                
+            }
+        });
+        
+        
+    },
     showItems : function(e){
 
       //  alert("Clicked!");
@@ -160,9 +195,10 @@ app.AppView = Backbone.View.extend({
         var self = this;
         app.feed = new app.FeedCollection();
         var id = parseInt(Cookies.get('instaUser'));
+        if(! isNaN(id)){
          app.feed.url ='https://harshitkumar.pythonanywhere.com/posts/api/feed/' + id;
-          
-        
+          $('#auth').hide();
+        $('#comment').hide();
        
         var y =app.feed.fetch({
              
@@ -177,7 +213,10 @@ app.AppView = Backbone.View.extend({
     
 //        this.listenTo(app.feed,'add',this.render);
       //  this.listenTo(app.feed,'change',this.render);
-        
+        }else{
+            $('#auth').show();
+            $('#comment').hide();
+        }
         $('#header-items').hide();
 
     },
