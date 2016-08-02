@@ -144,13 +144,8 @@ app.AppView = Backbone.View.extend({
             success : function(){
                 
                 console.log(app.usersList);
-                $('#lists').hide();
-                $('#output3').html("");
-                $('#output3').hide();
-                $('#output2').html("");
-                $('#output2').hide();
-                $('#comment').hide();
-        
+                
+                
                 
                 var x = app.usersList.models[0].get('users');
                 for(i=0;i<x.length;i++){
