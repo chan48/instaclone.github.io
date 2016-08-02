@@ -790,6 +790,14 @@ function showComment(){
         });
         return false;
 }
+        
+            function editFn(){
+                                
+                            $('#titleEdit').val($('#titleId').val());
+                            $('#useridEdit').val($('#uId').val());
+                            $('#date_createdEdit').val($('#date_created').val());
+                            $('#editModalB').click();
+                                   }
         function subscribe(placeholder) {
         $.ajax({
             url: $(placeholder).attr('rel') + Cookies.get('instaUser') ,
@@ -850,13 +858,6 @@ $('#efSubmit').click(function() {
 
         })
     });
-            function editFn(){
-                                
-                            $('#titleEdit').val($('#titleId').val());
-                            $('#useridEdit').val($('#uId').val());
-                            $('#date_createdEdit').val($('#date_created').val());
-                            $('#editModalB').click();
-                                   });
 });
         
         
