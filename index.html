@@ -450,8 +450,8 @@
         <h4 class="modal-title">Upload Image</h4>
       </div>
       <div class="modal-body">
-       <form action="https://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>" enctype="multipart/form-data" method="put" id="editForm">
-                <input type="hidden" name="csrfmiddlewaretoken" value="87KQjGeytUmnt637c21Sb3UF8dbOvhaQ">
+       <form action="https://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>" enctype="multipart/form-data" method="PUT" id="editForm">
+                
               <div class="form-group">
                 <input  class="form-control" id="title" placeholder="Title" value="<%= title%>" autofocus name="title">
             <input  type="file" id="image" name="image" value="<%= image%>">
@@ -459,7 +459,7 @@
 
 
                 <input   type="number" id="userid" name="user" value="<%= user%>" hidden="true">
-                <input   type="text" hidden="true" name="date_created" id="date_created" value="<%= date_created%>">
+                <input   type="text" hidden="true" name="date_created" id="date_created" >
                 <input  class="btn btn-primary" type="submit" value="Upload" >
                 </div>
                 </form>
@@ -474,6 +474,8 @@
 
     </form>    
 <% } %>
+
+
 </script>
     
     <script type="text/template" id="comment-template">
@@ -541,54 +543,35 @@
             var x = document.referrer;
             console.log(x);
         }
-        var options = { 
-        target:        '#output3',   // target element(s) to be updated with server response 
-        beforeSubmit:  showRequest,  // pre-submit callback 
-        success:       showResponse,  // post-submit callback 
-        resetForm: true 
-            }; 
-        $('#editForm').submit(function(){
-            console.log(new Date().toISOString().substring(0,10));
-            var date_str = new Date().toISOString().substring(0,10);
-            
-            $('#date_created').val(date_str);
-            
-        $(this).ajaxSubmit(options);
-        
-        $('#postForm')[0].reset();
-        return false;
-    });
-               function showRequest(formData, jqForm, options) { 
-    var queryString = $.param(formData); 
- 
-  
-  alert('About to submit: \n\n' + queryString); 
- 
-    return true; 
-} 
-    
-// post-submit callback 
-function showResponse(responseText, statusText, xhr, $form)  { 
-  
-    alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + 
-        '\n\nThe output div should have already been updated with the responseText.'); 
-    console.log(responseText);
-            var imgPost = new app.ImagePost(responseText);
-            var imgView = new app.PostView({model : imgPost });
-            
-        $('#lists').prepend(imgView.render().el);
-        
-
-    return false;
-}
- $(document).ready(function() { 
-     
-     var options = { 
-        target:        '#output3',   // target element(s) to be updated with server response 
-        beforeSubmit:  showRequest,  // pre-submit callback 
-        success:       showResponse,  // post-submit callback 
-        resetForm: true 
-            }; 
+//        var options = { 
+//        target:        '#output3',   // target element(s) to be updated with server response 
+//        beforeSubmit:  showRequest,  // pre-submit callback 
+//        success:       showResponse,  // post-submit callback 
+//        resetForm: true 
+//            }; 
+//    
+//// post-submit callback 
+//function showResponse(responseText, statusText, xhr, $form)  { 
+//  
+//    alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + 
+//        '\n\nThe output div should have already been updated with the responseText.'); 
+//    console.log(responseText);
+//            var imgPost = new app.ImagePost(responseText);
+//            var imgView = new app.PostView({model : imgPost });
+//            
+//        $('#lists').prepend(imgView.render().el);
+//        
+//
+//    return false;
+//}
+// $(document).ready(function() { 
+//     
+//     var options = { 
+//        target:        '#output3',   // target element(s) to be updated with server response 
+//        beforeSubmit:  showRequest,  // pre-submit callback 
+//        success:       showResponse,  // post-submit callback 
+//        resetForm: true 
+//            }; 
 //        var search_options = { 
 //        target:        '#output3',   // target element(s) to be updated with server response 
 //        beforeSubmit:  showRequest,  // pre-submit callback 
@@ -619,7 +602,26 @@ function showResponse(responseText, statusText, xhr, $form)  {
         resetForm: true 
             }; 
         
-     
+             $('#editForm').submit(function(){
+            console.log(new Date().toISOString().substring(0,10));
+            var date_str = new Date().toISOString().substring(0,10);
+            
+            $('#date_created').val(date_str);
+            
+        $(this).ajaxSubmit(options);
+        
+        $('#postForm')[0].reset();
+        return false;
+    });
+               function showRequest(formData, jqForm, options) { 
+    var queryString = $.param(formData); 
+ 
+  
+  alert('About to submit: \n\n' + queryString); 
+ 
+    return true; 
+} 
+
         $('#postForm').submit(function(){
             console.log(new Date().toISOString().substring(0,10));
             var date_str = new Date().toISOString().substring(0,10);
