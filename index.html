@@ -151,7 +151,7 @@
 
                 <input   type="number" id="userid" name="user"  hidden="true">
                 <input   type="text" hidden="true" name="date_created" id="date_created" >
-                <input  class="btn btn-primary" type="submit" value="Upload" >
+                <input  class="btn btn-primary" id="efSubmit" value="Upload" >
                 </div>
                 </form>
       </div>
@@ -828,6 +828,25 @@ function showComment(){
         });
         return false;
         }
+        
+        $(function() {
+
+    //this submits a form
+$('#efSubmit').click(function() {
+        $.ajax({
+            type: "PUT",
+            url: "https://harshitkumar.pythonanywhere.com/posts/api/posts/" + $('#pdId').html(),
+            data: $("#editForm").serialize(),
+            beforeSend: function() {
+                $('#output2').html('<img src="loading.gif" />');
+            },
+            success: function(data) {
+                $('#output2').html(data);
+            }
+
+        })
+    })
+})
         
     </script>
   <script src="https://www.google-analytics.com/urchin.js" type="text/javascript"></script>
