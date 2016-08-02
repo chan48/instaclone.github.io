@@ -367,6 +367,8 @@
 </table>
     </div>
     
+    
+    
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
 <script src="javascripts/bootstrap-dropdown.js"></script>
 
@@ -435,9 +437,43 @@
       <% if (userStat) {%>
        <h3 class="text-center"> <a class="deleteit" href="javascript:;" rel="https://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>"  onClick="deletePost(this);"><span class="glyphicon glyphicon-trash"></span></a></h3>
     <% } %>
-    </form>
     
+  <% if (userStat) {%>   
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editModal" id="editModalB"> Edit</button>
+<div id="editModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Upload Image</h4>
+      </div>
+      <div class="modal-body">
+       <form action="https://harshitkumar.pythonanywhere.com/posts/api/posts" enctype="multipart/form-data" method="put" id="editForm">
+                <input type="hidden" name="csrfmiddlewaretoken" value="87KQjGeytUmnt637c21Sb3UF8dbOvhaQ">
+              <div class="form-group">
+                <input  class="form-control" id="title" placeholder="Title" value="<%= title%>" autofocus name="title">
+            <input  type="file" id="image" name="image" value="<%= image%>">
+                <input type="hidden" name="redirect" value="index.html">
+
+
+                <input   type="number" id="userid" name="user" value="<%= user%>" hidden="true">
+                <input   type="text" hidden="true" name="date_created" id="date_created" value="<%= date_created%>">
+                <input  class="btn btn-primary" type="submit" value="Upload" >
+                </div>
+                </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    </form>    
+<% } %>
 </script>
     
     <script type="text/template" id="comment-template">
@@ -505,6 +541,23 @@
             var x = document.referrer;
             console.log(x);
         }
+        var options = { 
+        target:        '#output3',   // target element(s) to be updated with server response 
+        beforeSubmit:  showRequest,  // pre-submit callback 
+        success:       showResponse,  // post-submit callback 
+        resetForm: true 
+            }; 
+        $('#editForm').submit(function(){
+            console.log(new Date().toISOString().substring(0,10));
+            var date_str = new Date().toISOString().substring(0,10);
+            
+            $('#date_created').val(date_str);
+            
+        $(this).ajaxSubmit(options);
+        
+        $('#postForm')[0].reset();
+        return false;
+    });
  $(document).ready(function() { 
      
      var options = { 
