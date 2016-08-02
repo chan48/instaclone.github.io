@@ -839,7 +839,7 @@ $('#efSubmit').click(function() {
             data: $("#editForm").serialize(),
             beforeSend: function() {
                 $('#output2').html('<img src="loading.gif" />');
-                this.url = "https://harshitkumar.pythonanywhere.com/posts/api/posts/" + $('#pdId').val();
+                
             },
             success: function(data) {
                 $('#output2').html(data);
