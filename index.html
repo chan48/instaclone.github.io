@@ -136,15 +136,15 @@
         <h4 class="modal-title">Upload Image</h4>
       </div>
       <div class="modal-body">
-       <form action="https://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>" enctype="multipart/form-data" method="PUT" id="editForm">
+       <form action="https://harshitkumar.pythonanywhere.com/posts/api/posts/" enctype="multipart/form-data" method="PUT" id="editForm">
                 
               <div class="form-group">
-                <input  class="form-control" id="title" placeholder="Title" value="<%= title%>" autofocus name="title">
-            <input  type="file" id="image" name="image" value="<%= image%>">
+                <input  class="form-control" id="title" placeholder="Title"  autofocus name="title">
+            <input  type="file" id="image" name="image" >
                 <input type="hidden" name="redirect" value="index.html">
 
 
-                <input   type="number" id="userid" name="user" value="<%= user%>" hidden="true">
+                <input   type="number" id="userid" name="user"  hidden="true">
                 <input   type="text" hidden="true" name="date_created" id="date_created" >
                 <input  class="btn btn-primary" type="submit" value="Upload" >
                 </div>
