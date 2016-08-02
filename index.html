@@ -614,15 +614,6 @@
         $('#postForm')[0].reset();
         return false;
     });
-               function showRequest(formData, jqForm, options) { 
-    var queryString = $.param(formData); 
- 
-  
-  alert('About to submit: \n\n' + queryString); 
- 
-    return true; 
-} 
-
         $('#postForm').submit(function(){
             console.log(new Date().toISOString().substring(0,10));
             var date_str = new Date().toISOString().substring(0,10);
