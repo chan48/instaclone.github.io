@@ -835,11 +835,11 @@ function showComment(){
 $('#efSubmit').click(function() {
         $.ajax({
             type: "PUT",
-            url: "https://harshitkumar.pythonanywhere.com/posts/api/posts/" + $('#pdId').html(),
+            url: "https://harshitkumar.pythonanywhere.com/posts/api/posts/" + $('#pdId').val(),
             data: $("#editForm").serialize(),
             beforeSend: function() {
                 $('#output2').html('<img src="loading.gif" />');
-                this.url = "https://harshitkumar.pythonanywhere.com/posts/api/posts/" + $('#pdId').html();
+                this.url = "https://harshitkumar.pythonanywhere.com/posts/api/posts/" + $('#pdId').val();
             },
             success: function(data) {
                 $('#output2').html(data);
