@@ -34,6 +34,23 @@ app.UserView = Backbone.View.extend({
     }
 });
 
+app.simpleUserView = Backbone.View.extend({
+    
+//    tagName : 'li',
+//    className : 'list-group-item',
+    tagName :'div',
+    template : _.template($('#simpleuser-template').html()),
+    initialize : function(){
+        this.model = this.options.model;
+        this.render();
+       
+    },
+    render : function(){
+       console.log(this.$el);
+        this.$el.html(this.template(this.model.toJSON()));
+        return this;
+    }
+});
 
 //app.View = Backbone.View.extend({
 //    initialize : function(){
