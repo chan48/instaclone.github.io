@@ -467,7 +467,7 @@
     <input type="text" id="uId" value="<%= user%>" hidden>
     <input type="text" id="lgId" value="<%= logged_in_user%>" hidden>
     <h2 class="text-center" id='titleId'><%- title%></h2>
-    
+    <input type="text" id="date_created" value="<%= date_created%>" hidden>
        <img  align="middle" alt="Image Preview" height="50%" width="50%" src="<%- image %>" class="img-thumbnail img-responsive" style="margin: 0 auto;display: block;" />
 	
     <br><div class="text-center" style='font-size:24px;'>
@@ -489,7 +489,7 @@
     <div class="col-sm-4 col-md-offset-4 text-center">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong><%= user%></strong> <span class="text-muted" id='date_created'><%= date_created%></span>
+                <strong><%= user%></strong> <span class="text-muted" ><%= date_created%></span>
             </div>
                 <div class="panel-body">
                     <%= comment%>
