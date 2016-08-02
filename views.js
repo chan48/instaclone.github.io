@@ -72,6 +72,7 @@ app.AppView = Backbone.View.extend({
         'click a#logout':'logout',
         'click a#showUsers': 'showUsers',
         'click button#searchSub' : 'searchUsers',
+        'click div#no_likes' : 'showLikeUsers',
         //'click a' : 'showAll'
         'click a#homePage': 'showAll',
         
@@ -115,6 +116,36 @@ app.AppView = Backbone.View.extend({
     },
     showAll : function(e){
         app.router.navigate('home',true);
+    },
+    showLikeUsers : function(e){
+        app.usersList= new app.UserCollection();
+        var pid = e.currentTarget.getAttribute('data');
+        app.usersList.url = 'https://harshitkumar.pythonanywhere.com/posts/api/posts/likes/' + pid + '/users' ;
+        
+        app.usersList.fetch({
+            
+            success : function(){
+                
+                console.log(app.usersList);
+                $('#lists').hide();
+                $('#output3').html("");
+                $('#output3').hide();
+                $('#output2').html("");
+                $('#output2').hide();
+                $('#comment').hide();
+        
+                
+                var x = app.usersList.models[0].get('results');
+                for(i=0;i<x.length;i++){
+                    var userView = new app.UserView({model :new app.User(x[i]) });
+                    $('#likesModal').append(userView.render().el);
+                }
+                
+                $('#likesModalB').click();
+                
+            }
+        });
+        
     },
     showUsers : function(e){
         

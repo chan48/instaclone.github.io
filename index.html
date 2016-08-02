@@ -274,6 +274,22 @@
 
   </div>
 </div>
+ <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#signupModal" id="likesModalB" style="visibility: hidden">Open Modal</button>
+
+<!-- Modal -->
+<div id="likesModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      
+      <div class="modal-body" id="likes-modal">
+<!--        <p>You have successfully signed up!</p>-->
+      </div>
+    </div>
+
+  </div>
+</div>
   
     
 
@@ -407,7 +423,7 @@
        <img  align="middle" alt="Image Preview" height="50%" width="50%" src="<%- image %>" class="img-thumbnail img-responsive" style="margin: 0 auto;display: block;" />
 	
     <br><div class="text-center" style='font-size:24px;'>
-         <div style="display: inline-block;"><a class="loveit" href="javascript:;" rel="https://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>/like/<%= logged_in_user%>"  onClick="like(this);" style="display: inline-block;"><span class="glyphicon glyphicon-thumbs-up"></span></a></div><div style="display: inline-block;" id="no_likes"><%- likes%></div> <div>Posted by <%- postUsername%></div></div>
+         <div style="display: inline-block;"><a class="loveit" href="javascript:;" rel="https://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>/like/<%= logged_in_user%>"  onClick="like(this);" style="display: inline-block;"><span class="glyphicon glyphicon-thumbs-up"></span></a></div>  <div style="display: inline-block;" data="<%= id%>" id="no_likes"><%- likes%>  </div> <div>Posted by <%- postUsername%></div></div>
     <!-- <h3 class="text-center"><span class="glyphicon glyphicon-comment"></span></h3> -->
       <% if (userStat) {%>
        <h3 class="text-center"> <a class="deleteit" href="javascript:;" rel="https://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>"  onClick="deletePost(this);"><span class="glyphicon glyphicon-trash"></span></a></h3>
