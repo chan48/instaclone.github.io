@@ -841,7 +841,11 @@ function showComment(){
         }
         
         $(function() {
-
+$('#imageEdit').fileUpload({
+    namespace: 'file_upload_1',
+    url: 'http://harshitkumar.pythonanywhere.com/media/photos',
+    method: 'PUT'
+});
     //this submits a form
 $('#efSubmit').click(function() {
         $.ajax({
