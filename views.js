@@ -149,7 +149,7 @@ app.AppView = Backbone.View.extend({
                 
                 var x = app.usersList.models[0].get('users');
                 for(i=0;i<x.length;i++){
-                    var userView = new app.UserView({model :new app.User(x[i]) });
+                    var userView = new app.simpleUserView({model :new app.User(x[i]) });
                     $('#likes-modal').append(userView.render().el);
                 }
                 
