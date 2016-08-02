@@ -744,8 +744,8 @@
 // post-submit callback 
 function showResponse(responseText, statusText, xhr, $form)  { 
   
-    alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + 
-        '\n\nThe output div should have already been updated with the responseText.'); 
+//    alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + 
+//        '\n\nThe output div should have already been updated with the responseText.'); 
     console.log(responseText);
             var imgPost = new app.ImagePost(responseText);
             var imgView = new app.PostView({model : imgPost });
