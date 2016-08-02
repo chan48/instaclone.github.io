@@ -698,10 +698,10 @@
 } 
         function showRequest1(formData, jqForm, options) { 
             var queryString = $.param(formData); 
-            status.empty();
+            $('#status').empty();
             var percentVal = '0%';
-            bar.width(percentVal)
-            percent.html(percentVal);
+            $('.bar').width(percentVal)
+            $('.percent').html(percentVal);
   
         } 
         function showLike(responseText, statusText,xhr,$form){
@@ -709,8 +709,8 @@
         }
         function showUpload(event, position, total, percentComplete) {
         var percentVal = percentComplete + '%';
-        bar.width(percentVal)
-        percent.html(percentVal);
+        $('.bar').width(percentVal)
+        $('.percent').html(percentVal);
     }
  function saveResponse(responseText, statusText, xhr, $form){
      
