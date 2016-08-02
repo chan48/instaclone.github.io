@@ -117,6 +117,11 @@
                 <input  class="btn btn-primary" type="submit" value="Upload" >
                 </div>
                 </form>
+          
+           <div class="progress">
+            <div class="bar"></div >
+            <div class="percent">0%</div >
+            </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -565,12 +570,26 @@
 //
 //    return false;
 //}
+        var bar = $('.bar');
+    var percent = $('.percent');
+    var status = $('#status');
  $(document).ready(function() { 
-     
+      
+    var bar = $('.bar');
+    var percent = $('.percent');
+    var status = $('#status');
+   
      var options = { 
         target:        '#output3',   // target element(s) to be updated with server response 
         beforeSubmit:  showRequest,  // pre-submit callback 
         success:       showResponse,  // post-submit callback 
+        resetForm: true 
+            }; 
+     var f_options = { 
+        target:        '#output3',   // target element(s) to be updated with server response 
+        beforeSubmit:  showRequest1,  // pre-submit callback 
+        success:       showResponse,  // post-submit callback 
+         uploadProgress : showUpload,
         resetForm: true 
             }; 
 //        var search_options = { 
@@ -620,15 +639,12 @@
             
             $('#date_created').val(date_str);
             
-        $(this).ajaxSubmit(options);
+        $(this).ajaxSubmit(f_options);
         
         $('#postForm')[0].reset();
         return false;
     });
-//        $('#searchForm').submit(function(){
-//            $(this).ajaxSubmit(search_options);
-//            return false;
-//        });
+
       $('#commentForm').submit(function(){
 
           var pos_id = $('#pdId').val();
@@ -680,9 +696,22 @@
  
     return true; 
 } 
+        function showRequest1(formData, jqForm, options) { 
+            var queryString = $.param(formData); 
+            status.empty();
+            var percentVal = '0%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+  
+        } 
         function showLike(responseText, statusText,xhr,$form){
             
         }
+        function showUpload(event, position, total, percentComplete) {
+        var percentVal = percentComplete + '%';
+        bar.width(percentVal)
+        percent.html(percentVal);
+    },
  function saveResponse(responseText, statusText, xhr, $form){
      
      if(responseText.token==true){
@@ -801,6 +830,10 @@ function showComment(){
         }
         
     </script>
-  
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+    _uacct = "UA-850242-2";
+    urchinTracker();
+</script>
 </body>
 </html>
