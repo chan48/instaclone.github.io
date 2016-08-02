@@ -478,10 +478,12 @@
     <% } %>
     
     <% if (userStat) {%>   
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editModal" id="editModalB"> Edit</button>
+ <button type="button" class="btn btn-info btn-lg"  id="editB" > Edit</button>
+    
 <% }%>
 
 </script>
+     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editModal" id="editModalB" style="visibility:hidden"> Edit</button>
     
     <script type="text/template" id="comment-template">
     <div class="col-sm-4 col-md-offset-4 text-center">
@@ -848,11 +850,12 @@ $('#efSubmit').click(function() {
 
         })
     });
-            $('#editModalB').click(function(){
+            $('#editB').click(function(){
                                 
                             $('#titleEdit').val($('#titleId').val());
                             $('#useridEdit').val($('#uId').val());
                             $('#date_createdEdit').val($('#date_created').val());
+                            $('#editModalB').click();
                                    });
 });
         
