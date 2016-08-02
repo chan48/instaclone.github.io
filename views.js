@@ -144,7 +144,7 @@ app.AppView = Backbone.View.extend({
             success : function(){
                 
                 console.log(app.usersList);
-                
+                $('#likes-modal').html('');
                 
                 
                 var x = app.usersList.models[0].get('users');
