@@ -450,7 +450,7 @@
         <h4 class="modal-title">Upload Image</h4>
       </div>
       <div class="modal-body">
-       <form action="https://harshitkumar.pythonanywhere.com/posts/api/posts" enctype="multipart/form-data" method="put" id="editForm">
+       <form action="https://harshitkumar.pythonanywhere.com/posts/api/posts/<%= id%>" enctype="multipart/form-data" method="put" id="editForm">
                 <input type="hidden" name="csrfmiddlewaretoken" value="87KQjGeytUmnt637c21Sb3UF8dbOvhaQ">
               <div class="form-group">
                 <input  class="form-control" id="title" placeholder="Title" value="<%= title%>" autofocus name="title">
