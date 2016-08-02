@@ -478,7 +478,7 @@
     <% } %>
     
     <% if (userStat) {%>   
- <button type="button" class="btn btn-info btn-lg"  id="editB" > Edit</button>
+ <button type="button" class="btn btn-info btn-lg"  id="editB" onClick='editFn()'> Edit</button>
     
 <% }%>
 
@@ -850,7 +850,7 @@ $('#efSubmit').click(function() {
 
         })
     });
-            $('#editB').click(function(){
+            function editFn(){
                                 
                             $('#titleEdit').val($('#titleId').val());
                             $('#useridEdit').val($('#uId').val());
